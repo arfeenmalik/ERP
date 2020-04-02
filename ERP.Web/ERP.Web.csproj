@@ -21,6 +21,7 @@
   <ItemGroup>
     <PackageReference Include="MailKit" Version="2.0.6" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.1.1" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.60" />
     <PackageReference Include="Serenity.FluentMigrator.Runner" Version="1.6.904" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="2.0.0" />
   </ItemGroup>
