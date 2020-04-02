@@ -392,5 +392,14 @@ namespace MVC
             public const string LeftNavigation = "~/Views/Shared/LeftNavigation.cshtml";
         }
 
+        public static class test
+        {
+            public static class Movie
+            {
+                public const string MovieIndex = "~/Modules/test/Movie/MovieIndex.cshtml";
+            }
+
+        }
+
     }
 }

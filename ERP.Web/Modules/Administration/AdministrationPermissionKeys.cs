@@ -6,7 +6,7 @@ namespace ERP.Administration
 {
     [NestedPermissionKeys]
     [DisplayName("Administration")]
-    public class PermissionKeys
+    public partial class PermissionKeys
     {
         [Description("User, Role Management and Permissions")]
         public const string Security = "Administration:Security";

@@ -2036,6 +2036,56 @@ declare namespace ERP {
         };
     }
 }
+declare namespace ERP.test {
+}
+declare namespace ERP.test {
+    interface MovieForm {
+        Title: Serenity.StringEditor;
+    }
+    class MovieForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace ERP.test {
+    interface MovieRow {
+        Movieid?: number;
+        Title?: string;
+    }
+    namespace MovieRow {
+        const idProperty = "Movieid";
+        const nameProperty = "Title";
+        const localTextPrefix = "test.Movie";
+        const lookupKey = "MovieRow";
+        function getLookup(): Q.Lookup<MovieRow>;
+        const deletePermission = "test:Movie:MovieDelete";
+        const insertPermission = "test:Movie:MovieInsert";
+        const readPermission = "test:Movie:MovieRead";
+        const updatePermission = "test:Movie:MovieUpdate";
+        const enum Fields {
+            Movieid = "Movieid",
+            Title = "Title"
+        }
+    }
+}
+declare namespace ERP.test {
+    namespace MovieService {
+        const baseUrl = "test/Movie";
+        function Create(request: Serenity.SaveRequest<MovieRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<MovieRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<MovieRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<MovieRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "test/Movie/Create",
+            Update = "test/Movie/Update",
+            Delete = "test/Movie/Delete",
+            Retrieve = "test/Movie/Retrieve",
+            List = "test/Movie/List"
+        }
+    }
+}
 declare namespace ERP.Texts {
 }
 declare namespace ERP.LanguageList {
@@ -2768,6 +2818,30 @@ declare namespace ERP.Northwind {
         protected getColumnsKey(): string;
         protected getDialogType(): any;
         protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace ERP.test {
+    class MovieDialog extends Serenity.EntityDialog<MovieRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: MovieForm;
+    }
+}
+declare namespace ERP.test {
+    class MovieGrid extends Serenity.EntityGrid<MovieRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MovieDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
