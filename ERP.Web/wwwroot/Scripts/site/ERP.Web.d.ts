@@ -2041,6 +2041,11 @@ declare namespace ERP.test {
 declare namespace ERP.test {
     interface MovieForm {
         Title: Serenity.StringEditor;
+        Description: Serenity.StringEditor;
+        Storyline: Serenity.StringEditor;
+        Year: Serenity.IntegerEditor;
+        Releasedate: Serenity.StringEditor;
+        Runtime: Serenity.IntegerEditor;
     }
     class MovieForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -2052,6 +2057,11 @@ declare namespace ERP.test {
     interface MovieRow {
         Movieid?: number;
         Title?: string;
+        Description?: string;
+        Storyline?: string;
+        Year?: number;
+        Releasedate?: string;
+        Runtime?: number;
     }
     namespace MovieRow {
         const idProperty = "Movieid";
@@ -2065,7 +2075,12 @@ declare namespace ERP.test {
         const updatePermission = "test:Movie:MovieUpdate";
         const enum Fields {
             Movieid = "Movieid",
-            Title = "Title"
+            Title = "Title",
+            Description = "Description",
+            Storyline = "Storyline",
+            Year = "Year",
+            Releasedate = "Releasedate",
+            Runtime = "Runtime"
         }
     }
 }

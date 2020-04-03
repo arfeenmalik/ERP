@@ -2,6 +2,11 @@
     export interface MovieRow {
         Movieid?: number;
         Title?: string;
+        Description?: string;
+        Storyline?: string;
+        Year?: number;
+        Releasedate?: string;
+        Runtime?: number;
     }
 
     export namespace MovieRow {
@@ -20,7 +25,12 @@
 
         export declare const enum Fields {
             Movieid = "Movieid",
-            Title = "Title"
+            Title = "Title",
+            Description = "Description",
+            Storyline = "Storyline",
+            Year = "Year",
+            Releasedate = "Releasedate",
+            Runtime = "Runtime"
         }
     }
 }

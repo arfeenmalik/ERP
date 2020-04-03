@@ -17,5 +17,10 @@ namespace ERP.test.Columns
         public Int32 Movieid { get; set; }
         [EditLink]
         public String Title { get; set; }
+        public String Description { get; set; }
+        public Stream Storyline { get; set; }
+        public Int32 Year { get; set; }
+        public Stream Releasedate { get; set; }
+        public Int32 Runtime { get; set; }
     }
 }
