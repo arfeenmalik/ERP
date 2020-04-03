@@ -4,7 +4,7 @@
         Description: Serenity.StringEditor;
         Storyline: Serenity.StringEditor;
         Year: Serenity.IntegerEditor;
-        Releasedate: Serenity.StringEditor;
+        Releasedate: Serenity.DateEditor;
         Runtime: Serenity.IntegerEditor;
     }
 
@@ -21,13 +21,14 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.IntegerEditor;
+                var w2 = s.DateEditor;
 
                 Q.initFormType(MovieForm, [
                     'Title', w0,
                     'Description', w0,
                     'Storyline', w0,
                     'Year', w1,
-                    'Releasedate', w0,
+                    'Releasedate', w2,
                     'Runtime', w1
                 ]);
             }

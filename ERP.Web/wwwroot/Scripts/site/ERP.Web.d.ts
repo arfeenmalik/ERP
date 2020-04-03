@@ -2044,7 +2044,7 @@ declare namespace ERP.test {
         Description: Serenity.StringEditor;
         Storyline: Serenity.StringEditor;
         Year: Serenity.IntegerEditor;
-        Releasedate: Serenity.StringEditor;
+        Releasedate: Serenity.DateEditor;
         Runtime: Serenity.IntegerEditor;
     }
     class MovieForm extends Serenity.PrefixedContext {
