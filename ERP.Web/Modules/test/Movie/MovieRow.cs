@@ -77,7 +77,7 @@ namespace ERP.test.Entities
         }
         [DisplayName("Genres")]
         [LookupEditor(typeof(GenreRow), Multiple = true), NotMapped]
-        [LinkingSetRelation(typeof(MoviegenresRow), "MovieId", "GenreId")]
+        [LinkingSetRelation(typeof(MoviegenresRow), "Movieid", "Genreid")]
         public List<Int32> GenreList
         {
             get { return Fields.GenreList[this]; }

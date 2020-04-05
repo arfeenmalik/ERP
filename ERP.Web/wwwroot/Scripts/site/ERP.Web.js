@@ -8494,7 +8494,6 @@ var ERP;
     var test;
     (function (test) {
         var GenreListFormatter = /** @class */ (function () {
-            // @Serenity.Decorators.registerClass()
             function GenreListFormatter() {
             }
             GenreListFormatter.prototype.format = function (ctx) {
@@ -8511,7 +8510,6 @@ var ERP;
             };
             GenreListFormatter = __decorate([
                 Serenity.Decorators.registerFormatter("ERP.test.GenreListFormatter")
-                // @Serenity.Decorators.registerClass()
             ], GenreListFormatter);
             return GenreListFormatter;
         }());
