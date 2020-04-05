@@ -6,7 +6,7 @@
         Year: Serenity.IntegerEditor;
         Releasedate: Serenity.DateEditor;
         Kind: Serenity.EnumEditor;
-        GenreId: Serenity.LookupEditor;
+        GenreList: Serenity.LookupEditor;
         Runtime: Serenity.IntegerEditor;
     }
 
@@ -34,7 +34,7 @@
                     'Year', w1,
                     'Releasedate', w2,
                     'Kind', w3,
-                    'GenreId', w4,
+                    'GenreList', w4,
                     'Runtime', w1
                 ]);
             }

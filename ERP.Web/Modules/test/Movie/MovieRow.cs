@@ -8,6 +8,7 @@ namespace ERP.test.Entities
     using System;
     using System.ComponentModel;
     using ERP.Administration;
+    using System.Collections.Generic;
 
     [ConnectionKey("Default"), Module("test"), TableName("[MOV].[MOVIE]")]
     [DisplayName("Movie"), InstanceName("Movie")]
@@ -74,20 +75,15 @@ namespace ERP.test.Entities
             get { return (MovieKind?)Fields.Kind[this]; }
             set { Fields.Kind[this] = (Int32?)value; }
         }
-        [DisplayName("Genre"), ForeignKey("[mov].Genre", "GenreId"), LeftJoin("g")]
-        [LookupEditor(typeof(GenreRow), InplaceAdd = true)]
-        public Int32? GenreId
+        [DisplayName("Genres")]
+        [LookupEditor(typeof(GenreRow), Multiple = true), NotMapped]
+        [LinkingSetRelation(typeof(MoviegenresRow), "MovieId", "GenreId")]
+        public List<Int32> GenreList
         {
-            get { return Fields.GenreId[this]; }
-            set { Fields.GenreId[this] = value; }
+            get { return Fields.GenreList[this]; }
+            set { Fields.GenreList[this] = value; }
         }
 
-        [DisplayName("Genre"), Expression("g.Name")]
-        public String GenreName
-        {
-            get { return Fields.GenreName[this]; }
-            set { Fields.GenreName[this] = value; }
-        }
         IIdField IIdRow.IdField
         {
             get { return Fields.Movieid; }
@@ -115,8 +111,7 @@ namespace ERP.test.Entities
             public DateTimeField Releasedate;
             public Int32Field Runtime;
             public Int32Field Kind;
-            public Int32Field GenreId;
-            public StringField GenreName;
+            public ListField<Int32> GenreList;
 
 
 

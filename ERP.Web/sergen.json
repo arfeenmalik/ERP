@@ -19,6 +19,12 @@
           "Identifier": "Movie",
           "Module": "test",
           "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "MOV.MOVIEGENRES",
+          "Identifier": "Moviegenres",
+          "Module": "test",
+          "PermissionKey": "Administration:General"
         }
       ]
     }
