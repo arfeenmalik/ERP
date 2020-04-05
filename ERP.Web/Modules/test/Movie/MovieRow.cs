@@ -32,21 +32,21 @@ namespace ERP.test.Entities
             set { Fields.Title[this] = value; }
         }
 
-        [DisplayName("Description"), Column("DESCRIPTION"), Size(1000)]
+        [DisplayName("Description"), Column("DESCRIPTION"), Size(1000),QuickSearch]
         public String Description
         {
             get { return Fields.Description[this]; }
             set { Fields.Description[this] = value; }
         }
 
-        [DisplayName("Storyline"), Column("STORYLINE")]
+        [DisplayName("Storyline"), Column("STORYLINE"),QuickSearch]
         public String Storyline
         {
             get { return Fields.Storyline[this]; }
             set { Fields.Storyline[this] = value; }
         }
 
-        [DisplayName("Year"), Column("YEAR"), Size(10)]
+        [DisplayName("Year"), Column("YEAR"), Size(10),QuickSearch(SearchType.Equals,numericOnly:1)]
         public Int32? Year
         {
             get { return Fields.Year[this]; }
