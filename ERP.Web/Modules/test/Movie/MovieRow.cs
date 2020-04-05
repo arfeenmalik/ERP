@@ -67,6 +67,13 @@ namespace ERP.test.Entities
             set { Fields.Runtime[this] = value; }
         }
 
+        [DisplayName("Kind"), Column("KIND"),DefaultValue(MovieKind.Film)]
+        public MovieKind? Kind
+        {
+            get { return (MovieKind?)Fields.Kind[this]; }
+            set { Fields.Kind[this] = (Int32?)value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.Movieid; }
@@ -93,6 +100,10 @@ namespace ERP.test.Entities
             public Int32Field Year;
             public DateTimeField Releasedate;
             public Int32Field Runtime;
+            public Int32Field Kind;
+
+           
+
         }
     }
 }

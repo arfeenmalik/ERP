@@ -9,6 +9,12 @@
       "Key": "Default",
       "Tables": [
         {
+          "Tablename": "MOV.GENRE",
+          "Identifier": "Genre",
+          "Module": "test",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "MOV.MOVIE",
           "Identifier": "Movie",
           "Module": "test",

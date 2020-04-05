@@ -22,5 +22,7 @@ namespace ERP.test.Columns
         public Int32 Year { get; set; }
         public Stream Releasedate { get; set; }
         public Int32 Runtime { get; set; }
+
+        public MovieKind Kind { get; set; }
     }
 }

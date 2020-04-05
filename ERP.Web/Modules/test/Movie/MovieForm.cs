@@ -18,6 +18,7 @@ namespace ERP.test.Forms
         public String Storyline { get; set; }
         public Int32 Year { get; set; }
         public DateTime Releasedate { get; set; }
+        public MovieKind Kind { get; set; }
         public Int32 Runtime { get; set; }
     }
 }
