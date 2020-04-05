@@ -16,6 +16,7 @@ namespace ERP.test.Entities
     [UpdatePermission(PermissionKeys.MovieUpdate)]
     [DeletePermission(PermissionKeys.MovieDelete)]
 	[LookupScript(nameof(MovieRow))]
+
     public sealed class MovieRow : Row, IIdRow, INameRow
     {
         [DisplayName("Movieid"), Column("MOVIEID"), Size(10), PrimaryKey]
@@ -73,7 +74,20 @@ namespace ERP.test.Entities
             get { return (MovieKind?)Fields.Kind[this]; }
             set { Fields.Kind[this] = (Int32?)value; }
         }
+        [DisplayName("Genre"), ForeignKey("[mov].Genre", "GenreId"), LeftJoin("g")]
+        [LookupEditor(typeof(GenreRow), InplaceAdd = true)]
+        public Int32? GenreId
+        {
+            get { return Fields.GenreId[this]; }
+            set { Fields.GenreId[this] = value; }
+        }
 
+        [DisplayName("Genre"), Expression("g.Name")]
+        public String GenreName
+        {
+            get { return Fields.GenreName[this]; }
+            set { Fields.GenreName[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.Movieid; }
@@ -101,8 +115,10 @@ namespace ERP.test.Entities
             public DateTimeField Releasedate;
             public Int32Field Runtime;
             public Int32Field Kind;
+            public Int32Field GenreId;
+            public StringField GenreName;
 
-           
+
 
         }
     }

@@ -6,6 +6,7 @@
         Year: Serenity.IntegerEditor;
         Releasedate: Serenity.DateEditor;
         Kind: Serenity.EnumEditor;
+        GenreId: Serenity.LookupEditor;
         Runtime: Serenity.IntegerEditor;
     }
 
@@ -24,6 +25,7 @@
                 var w1 = s.IntegerEditor;
                 var w2 = s.DateEditor;
                 var w3 = s.EnumEditor;
+                var w4 = s.LookupEditor;
 
                 Q.initFormType(MovieForm, [
                     'Title', w0,
@@ -32,6 +34,7 @@
                     'Year', w1,
                     'Releasedate', w2,
                     'Kind', w3,
+                    'GenreId', w4,
                     'Runtime', w1
                 ]);
             }

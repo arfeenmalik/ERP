@@ -2057,7 +2057,7 @@ declare namespace ERP.test {
         const idProperty = "Genreid";
         const nameProperty = "Name";
         const localTextPrefix = "test.Genre";
-        const lookupKey = "GenreRow";
+        const lookupKey = "test.Genre";
         function getLookup(): Q.Lookup<GenreRow>;
         const deletePermission = "test:Genre:GenreDelete";
         const insertPermission = "test:Genre:GenreInsert";
@@ -2096,6 +2096,7 @@ declare namespace ERP.test {
         Year: Serenity.IntegerEditor;
         Releasedate: Serenity.DateEditor;
         Kind: Serenity.EnumEditor;
+        GenreId: Serenity.LookupEditor;
         Runtime: Serenity.IntegerEditor;
     }
     class MovieForm extends Serenity.PrefixedContext {
@@ -2121,6 +2122,8 @@ declare namespace ERP.test {
         Releasedate?: string;
         Runtime?: number;
         Kind?: MovieKind;
+        GenreId?: number;
+        GenreName?: string;
     }
     namespace MovieRow {
         const idProperty = "Movieid";
@@ -2140,7 +2143,9 @@ declare namespace ERP.test {
             Year = "Year",
             Releasedate = "Releasedate",
             Runtime = "Runtime",
-            Kind = "Kind"
+            Kind = "Kind",
+            GenreId = "GenreId",
+            GenreName = "GenreName"
         }
     }
 }

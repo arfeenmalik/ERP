@@ -19,6 +19,8 @@ namespace ERP.test.Forms
         public Int32 Year { get; set; }
         public DateTime Releasedate { get; set; }
         public MovieKind Kind { get; set; }
+        public Int32 GenreId { get; set; }
+
         public Int32 Runtime { get; set; }
     }
 }

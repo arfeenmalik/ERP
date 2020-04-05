@@ -24,5 +24,7 @@ namespace ERP.test.Columns
         public Int32 Runtime { get; set; }
 
         public MovieKind Kind { get; set; }
+        [Width(100),QuickFilter]
+        public String GenreName { get; set; }
     }
 }

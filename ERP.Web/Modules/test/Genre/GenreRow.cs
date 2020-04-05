@@ -15,7 +15,9 @@ namespace ERP.test.Entities
     [InsertPermission(PermissionKeys.GenreInsert)]
     [UpdatePermission(PermissionKeys.GenreUpdate)]
     [DeletePermission(PermissionKeys.GenreDelete)]
-	[LookupScript(nameof(GenreRow))]
+	//[LookupScript(nameof(GenreRow))]
+    [LookupScript("test.Genre")]
+
     public sealed class GenreRow : Row, IIdRow, INameRow
     {
         [DisplayName("Genreid"), Column("GENREID"), Size(10), PrimaryKey]

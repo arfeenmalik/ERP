@@ -6,3 +6,5 @@ using MyPages = ERP.test.Pages;
 
 [assembly: NavigationLink(2000, "MovieTutorial", typeof(MyPages.MovieController), icon: null)]
 [assembly: NavigationLink(2100, "MovieTutorial/Movie", typeof(MyPages.MovieController), icon: null)]
+
+[assembly: NavigationLink(2200, "MovieTutorial/Genre", typeof(MyPages.GenreController), icon: null)]
