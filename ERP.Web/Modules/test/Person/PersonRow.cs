@@ -15,7 +15,9 @@ namespace ERP.test.Entities
     [InsertPermission(PermissionKeys.PersonInsert)]
     [UpdatePermission(PermissionKeys.PersonUpdate)]
     [DeletePermission(PermissionKeys.PersonDelete)]
-	[LookupScript(nameof(PersonRow))]
+	//[LookupScript(nameof(PersonRow))]
+    [LookupScript("test.Person")]
+
     public sealed class PersonRow : Row, IIdRow, INameRow
     {
         [DisplayName("Personid"), Column("PERSONID"), Size(10), Identity]
@@ -39,8 +41,8 @@ namespace ERP.test.Entities
             set { Fields.Lastname[this] = value; }
         }
 
-        [DisplayName("Full Name"), QuickSearch,
-        Expression("CONCAT(T0.[Firstname], CONCAT(' ', T0.[Lastname]))")]
+        [DisplayName("Full Name"), QuickSearch,Expression("(t0.Firstname || ' ' || t0.Lastname)")]
+       // Expression("CONCAT(T0.[Firstname], CONCAT(' ', T0.[Lastname]))")]
 
         public String Fullname
         {

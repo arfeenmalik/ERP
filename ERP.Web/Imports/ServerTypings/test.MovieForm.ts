@@ -2,6 +2,7 @@
     export interface MovieForm {
         Title: Serenity.StringEditor;
         Description: Serenity.StringEditor;
+        CastList: MovieCastEditor;
         Storyline: Serenity.StringEditor;
         Year: Serenity.IntegerEditor;
         Releasedate: Serenity.DateEditor;
@@ -22,20 +23,22 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.IntegerEditor;
-                var w2 = s.DateEditor;
-                var w3 = s.EnumEditor;
-                var w4 = s.LookupEditor;
+                var w1 = MovieCastEditor;
+                var w2 = s.IntegerEditor;
+                var w3 = s.DateEditor;
+                var w4 = s.EnumEditor;
+                var w5 = s.LookupEditor;
 
                 Q.initFormType(MovieForm, [
                     'Title', w0,
                     'Description', w0,
+                    'CastList', w1,
                     'Storyline', w0,
-                    'Year', w1,
-                    'Releasedate', w2,
-                    'Kind', w3,
-                    'GenreList', w4,
-                    'Runtime', w1
+                    'Year', w2,
+                    'Releasedate', w3,
+                    'Kind', w4,
+                    'GenreList', w5,
+                    'Runtime', w2
                 ]);
             }
         }

@@ -2095,9 +2095,93 @@ declare namespace ERP.test {
 declare namespace ERP.test {
 }
 declare namespace ERP.test {
+    interface MoviecastForm {
+        Personid: Serenity.LookupEditor;
+        Character: Serenity.StringEditor;
+    }
+    class MoviecastForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace ERP.test {
+    interface MoviecastRow {
+        Moviecastid?: number;
+        Movieid?: number;
+        Personid?: number;
+        Character?: string;
+        MovieidTitle?: string;
+        MovieidDescription?: string;
+        MovieidStoryline?: string;
+        MovieidYear?: number;
+        MovieidReleasedate?: string;
+        MovieidRuntime?: number;
+        MovieidKind?: number;
+        PersonidFirstname?: string;
+        PersonidLastname?: string;
+        PersonFullname?: string;
+        PersonidBirthdate?: string;
+        PersonidBirthplace?: string;
+        PersonidGender?: number;
+        PersonidHeight?: number;
+    }
+    namespace MoviecastRow {
+        const idProperty = "Moviecastid";
+        const nameProperty = "Character";
+        const localTextPrefix = "test.Moviecast";
+        const lookupKey = "MoviecastRow";
+        function getLookup(): Q.Lookup<MoviecastRow>;
+        const deletePermission = "test:Moviecast:MoviecastDelete";
+        const insertPermission = "test:Moviecast:MoviecastInsert";
+        const readPermission = "test:Moviecast:MoviecastRead";
+        const updatePermission = "test:Moviecast:MoviecastUpdate";
+        const enum Fields {
+            Moviecastid = "Moviecastid",
+            Movieid = "Movieid",
+            Personid = "Personid",
+            Character = "Character",
+            MovieidTitle = "MovieidTitle",
+            MovieidDescription = "MovieidDescription",
+            MovieidStoryline = "MovieidStoryline",
+            MovieidYear = "MovieidYear",
+            MovieidReleasedate = "MovieidReleasedate",
+            MovieidRuntime = "MovieidRuntime",
+            MovieidKind = "MovieidKind",
+            PersonidFirstname = "PersonidFirstname",
+            PersonidLastname = "PersonidLastname",
+            PersonFullname = "PersonFullname",
+            PersonidBirthdate = "PersonidBirthdate",
+            PersonidBirthplace = "PersonidBirthplace",
+            PersonidGender = "PersonidGender",
+            PersonidHeight = "PersonidHeight"
+        }
+    }
+}
+declare namespace ERP.test {
+    namespace MoviecastService {
+        const baseUrl = "test/Moviecast";
+        function Create(request: Serenity.SaveRequest<MoviecastRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<MoviecastRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<MoviecastRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<MoviecastRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "test/Moviecast/Create",
+            Update = "test/Moviecast/Update",
+            Delete = "test/Moviecast/Delete",
+            Retrieve = "test/Moviecast/Retrieve",
+            List = "test/Moviecast/List"
+        }
+    }
+}
+declare namespace ERP.test {
+}
+declare namespace ERP.test {
     interface MovieForm {
         Title: Serenity.StringEditor;
         Description: Serenity.StringEditor;
+        CastList: MovieCastEditor;
         Storyline: Serenity.StringEditor;
         Year: Serenity.IntegerEditor;
         Releasedate: Serenity.DateEditor;
@@ -2172,6 +2256,7 @@ declare namespace ERP.test {
         Runtime?: number;
         Kind?: MovieKind;
         GenreList?: number[];
+        CastList?: MoviecastRow[];
     }
     namespace MovieRow {
         const idProperty = "Movieid";
@@ -2192,7 +2277,8 @@ declare namespace ERP.test {
             Releasedate = "Releasedate",
             Runtime = "Runtime",
             Kind = "Kind",
-            GenreList = "GenreList"
+            GenreList = "GenreList",
+            CastList = "CastList"
         }
     }
 }
@@ -2245,7 +2331,7 @@ declare namespace ERP.test {
         const idProperty = "Personid";
         const nameProperty = "Fullname";
         const localTextPrefix = "test.Person";
-        const lookupKey = "PersonRow";
+        const lookupKey = "test.Person";
         function getLookup(): Q.Lookup<PersonRow>;
         const deletePermission = "test:Person:PersonDelete";
         const insertPermission = "test:Person:PersonInsert";
@@ -3070,6 +3156,25 @@ declare namespace ERP.test {
         protected getQuickSearchFields(): Serenity.QuickSearchField[];
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         constructor(container: JQuery);
+    }
+}
+declare namespace ERP.test {
+    class MovieCastEditDialog extends Common.GridEditorDialog<MoviecastRow> {
+        protected getFormKey(): string;
+        protected getNameProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: MoviecastForm;
+        constructor();
+    }
+}
+declare namespace ERP.test {
+    class MovieCastEditor extends Common.GridEditorBase<MoviecastRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof MovieCastEditDialog;
+        protected getLocalTextPrefix(): string;
+        protected validateEntity(row: MoviecastRow, id: number): boolean;
+        constructor(container: JQuery);
+        protected getAddButtonCaption(): string;
     }
 }
 declare namespace ERP.test {

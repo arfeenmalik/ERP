@@ -2,6 +2,10 @@
     declare namespace PermissionKeys {
         export const Security = "Administration:Security";
         export const Translation = "Administration:Translation";
+        export const MoviecastRead = "test:Moviecast:MoviecastRead";
+        export const MoviecastInsert = "test:Moviecast:MoviecastInsert";
+        export const MoviecastUpdate = "test:Moviecast:MoviecastUpdate";
+        export const MoviecastDelete = "test:Moviecast:MoviecastDelete";
         export const PersonRead = "test:Person:PersonRead";
         export const PersonInsert = "test:Person:PersonInsert";
         export const PersonUpdate = "test:Person:PersonUpdate";

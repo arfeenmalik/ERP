@@ -14,10 +14,10 @@
         export const idProperty = 'Personid';
         export const nameProperty = 'Fullname';
         export const localTextPrefix = 'test.Person';
-        export const lookupKey = 'PersonRow';
+        export const lookupKey = 'test.Person';
 
         export function getLookup(): Q.Lookup<PersonRow> {
-            return Q.getLookup<PersonRow>('PersonRow');
+            return Q.getLookup<PersonRow>('test.Person');
         }
         export const deletePermission = 'test:Person:PersonDelete';
         export const insertPermission = 'test:Person:PersonInsert';

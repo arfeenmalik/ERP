@@ -9,6 +9,7 @@
         Runtime?: number;
         Kind?: MovieKind;
         GenreList?: number[];
+        CastList?: MoviecastRow[];
     }
 
     export namespace MovieRow {
@@ -34,7 +35,8 @@
             Releasedate = "Releasedate",
             Runtime = "Runtime",
             Kind = "Kind",
-            GenreList = "GenreList"
+            GenreList = "GenreList",
+            CastList = "CastList"
         }
     }
 }

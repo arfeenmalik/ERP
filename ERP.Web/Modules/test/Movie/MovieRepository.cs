@@ -37,9 +37,58 @@ namespace ERP.test.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
-        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow> {
+            protected override void AfterSave()
+            {
+                base.AfterSave();
+
+                if (Row.CastList != null)
+                {
+                    var mc = Entities.MoviecastRow.Fields;
+                    var oldList = IsCreate ? null :
+                        Connection.List<Entities.MoviecastRow>(
+                            mc.Movieid == this.Row.Movieid.Value);
+
+                    new Common.DetailListSaveHandler<Entities.MoviecastRow>(
+                        oldList, Row.CastList,
+                        x => x.Movieid = Row.Movieid.Value).Process(this.UnitOfWork);
+                }
+            }
+
+
+        }
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow> {
+            protected override void OnBeforeDelete()
+            {
+                base.OnBeforeDelete();
+
+                var mc = Entities.MoviecastRow.Fields;
+                foreach (var detailID in Connection.Query<Int32>(
+                    new SqlQuery()
+                        .From(mc)
+                        .Select(mc.Moviecastid)
+                        .Where(mc.Movieid == Row.Movieid.Value)))
+                {
+                    new DeleteRequestHandler<Entities.MoviecastRow>().Process(this.UnitOfWork,
+                        new DeleteRequest
+                        {
+                            EntityId = detailID
+                        });
+                }
+            }
+        }
+        private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> {
+            protected override void OnReturn()
+            {
+                base.OnReturn();
+
+                var mc = Entities.MoviecastRow.Fields;
+                Row.CastList = Connection.List<Entities.MoviecastRow>(q => q
+                    .SelectTableFields()
+                    .Select(mc.PersonFullname)
+                    .Where(mc.Movieid == Row.Movieid.Value));
+            }
+        }
       //  private class MyListHandler : ListRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow, MovieListRequest> {
             protected override void ApplyFilters(SqlQuery query)

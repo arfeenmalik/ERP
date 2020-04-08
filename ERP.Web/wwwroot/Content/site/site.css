@@ -8748,3 +8748,12 @@ section.content > .s-DataGrid {
 .s-test-PersonDialog .caption {
   width: 120px;
 }
+.s-test-MoviecastEditDialog > .size {
+  width: 450px;
+}
+.s-test-MoviecastEditDialog .caption {
+  width: 120px;
+}
+.s-test-MoviecastEditDialog .s-PropertyGrid .categories {
+  height: 120px;
+}

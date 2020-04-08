@@ -41,6 +41,13 @@ namespace ERP.test.Entities
             set { Fields.Description[this] = value; }
         }
 
+        [DisplayName("Cast List"), NotMapped]
+        public List<MoviecastRow> CastList
+        {
+            get { return Fields.CastList[this]; }
+            set { Fields.CastList[this] = value; }
+        }
+
         [DisplayName("Storyline"), Column("STORYLINE"),QuickSearch]
         public String Storyline
         {
@@ -112,6 +119,7 @@ namespace ERP.test.Entities
             public Int32Field Runtime;
             public Int32Field Kind;
             public ListField<Int32> GenreList;
+            public RowListField<MoviecastRow> CastList;
 
 
 
