@@ -21,7 +21,7 @@ namespace ERP.test.Columns
         public Stream Storyline { get; set; }
         public Int32 Year { get; set; }
         public Stream Releasedate { get; set; }
-        [Width(200),GenreListFormatter ]
+        [Width(200),GenreListFormatter, QuickFilter ]
         public List<Int32> GenreList { get; set; }
         public Int32 Runtime { get; set; }
 

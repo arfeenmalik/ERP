@@ -18,7 +18,7 @@ namespace ERP.test.Entities
 	[LookupScript(nameof(MoviegenresRow))]
     public sealed class MoviegenresRow : Row, IIdRow
     {
-        [DisplayName("Moviegenreid"), Column("MOVIEGENREID"), Size(10), PrimaryKey]
+        [DisplayName("Moviegenreid"), Column("MOVIEGENREID"), Size(10),Identity]
         public Int32? Moviegenreid
         {
             get { return Fields.Moviegenreid[this]; }

@@ -404,6 +404,11 @@ namespace MVC
                 public const string MovieIndex = "~/Modules/test/Movie/MovieIndex.cshtml";
             }
 
+            public static class Person
+            {
+                public const string PersonIndex = "~/Modules/test/Person/PersonIndex.cshtml";
+            }
+
         }
 
     }

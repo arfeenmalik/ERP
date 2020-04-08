@@ -6,6 +6,14 @@ namespace ERP.Administration
     public partial class PermissionKeys
     {
             [Description("Read")]
+            public const string PersonRead = "test:Person:PersonRead";
+            [Description("Insert")]
+            public const string PersonInsert = "test:Person:PersonInsert";
+            [Description("Update")]
+            public const string PersonUpdate = "test:Person:PersonUpdate";
+            [Description("Delete")]
+            public const string PersonDelete = "test:Person:PersonDelete";
+            [Description("Read")]
             public const string MoviegenresRead = "test:Moviegenres:MoviegenresRead";
             [Description("Insert")]
             public const string MoviegenresInsert = "test:Moviegenres:MoviegenresInsert";

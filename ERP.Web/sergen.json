@@ -25,6 +25,12 @@
           "Identifier": "Moviegenres",
           "Module": "test",
           "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "MOV.PERSON",
+          "Identifier": "Person",
+          "Module": "test",
+          "PermissionKey": "Administration:General"
         }
       ]
     }

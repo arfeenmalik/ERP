@@ -6,9 +6,9 @@ namespace ERP.test.Repositories
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.MovieRow;
+    using MyRow = Entities.PersonRow;
 
-    public class MovieRepository
+    public class PersonRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
@@ -32,7 +32,7 @@ namespace ERP.test.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, MovieListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -40,28 +40,6 @@ namespace ERP.test.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-      //  private class MyListHandler : ListRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow, MovieListRequest> {
-            protected override void ApplyFilters(SqlQuery query)
-            {
-                base.ApplyFilters(query);
-
-                if (!Request.Genres.IsEmptyOrNull())
-                {
-                    var mg = Entities.MoviegenresRow.Fields.As("mg");
-
-                    query.Where(Criteria.Exists(
-                        query.SubQuery()
-                            .From(mg)
-                            .Select("1")
-                            .Where(
-                                mg.Movieid == fld.Movieid &&
-                                mg.Genreid.In(Request.Genres))
-                            .ToString()));
-                }
-            }
-
-        }
-
+        private class MyListHandler : ListRequestHandler<MyRow> { }
     }
 }

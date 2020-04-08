@@ -20,7 +20,7 @@ namespace ERP.test.Entities
 
     public sealed class MovieRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Movieid"), Column("MOVIEID"), Size(10), PrimaryKey]
+        [DisplayName("Movieid"), Column("MOVIEID"), Size(10), Identity]
         public Int32? Movieid
         {
             get { return Fields.Movieid[this]; }

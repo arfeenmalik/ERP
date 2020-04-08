@@ -8742,3 +8742,9 @@ section.content > .s-DataGrid {
 .s-test-GenreDialog .caption {
   width: 120px;
 }
+.s-test-PersonDialog > .size {
+  width: 750px;
+}
+.s-test-PersonDialog .caption {
+  width: 120px;
+}
