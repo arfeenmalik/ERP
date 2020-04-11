@@ -31,14 +31,16 @@ namespace ERP.Administration.Endpoints
         {
             var process = Process.Start(new ProcessStartInfo
             {
-                FileName = "dotnet",
+                FileName = @"D:\sergen\net461\dotnet-sergen.exe",
                 CreateNoWindow = true,
-                Arguments = "sergen " + string.Join(" ", arguments)
+                Arguments = string.Join(" ", arguments)
             });
 
             if (!process.WaitForExit(90000) || process.ExitCode != 0)
                 throw new ValidationError("Error while running Sergen!");
+
         }
+
 
         private string Escape(string value)
         {
@@ -58,15 +60,13 @@ namespace ERP.Administration.Endpoints
             {
                 var process = Process.Start(new ProcessStartInfo
                 {
-                    FileName = "dotnet",
+                    FileName = @"D:\sergen\net461\dotnet-sergen.exe",
                     CreateNoWindow = true,
                     WorkingDirectory = hostingEnvironment.ContentRootPath,
-                    Arguments = "sergen " + string.Join(" ", arguments) + " -o " + Escape(tempFile)
+                    Arguments = string.Join(" ", arguments) + " -o " + Escape(tempFile)
                 });
-
                 if (!process.WaitForExit(90000) || process.ExitCode != 0)
                     throw new ValidationError("Error while running Sergen!");
-
                 return JSON.ParseTolerant<TOut>(System.IO.File.ReadAllText(tempFile));
             }
             finally
