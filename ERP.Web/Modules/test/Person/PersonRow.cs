@@ -41,6 +41,22 @@ namespace ERP.test.Entities
             set { Fields.Lastname[this] = value; }
         }
 
+        [DisplayName("Primary Image"), Size(100),
+         ImageUploadEditor(FilenameFormat = "Person/PrimaryImage/~")]
+        public string PrimaryImage
+        {
+            get { return Fields.PrimaryImage[this]; }
+            set { Fields.PrimaryImage[this] = value; }
+        }
+
+        [DisplayName("Gallery Images"),
+         MultipleImageUploadEditor(FilenameFormat = "Person/GalleryImages/~")]
+        public string GalleryImages
+        {
+            get { return Fields.GalleryImages[this]; }
+            set { Fields.GalleryImages[this] = value; }
+        }
+
         [DisplayName("Full Name"), QuickSearch,Expression("(t0.Firstname || ' ' || t0.Lastname)")]
        // Expression("CONCAT(T0.[Firstname], CONCAT(' ', T0.[Lastname]))")]
 
@@ -106,6 +122,9 @@ namespace ERP.test.Entities
             public StringField Birthplace;
             public Int32Field Gender;
             public Int32Field Height;
+
+            public StringField PrimaryImage;
+            public StringField GalleryImages;
 
         }
     }

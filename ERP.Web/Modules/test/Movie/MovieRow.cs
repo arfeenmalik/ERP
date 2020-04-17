@@ -41,6 +41,22 @@ namespace ERP.test.Entities
             set { Fields.Description[this] = value; }
         }
 
+        [DisplayName("Primary Image"), Size(100),
+         ImageUploadEditor(FilenameFormat = "Movie/PrimaryImage/~")]
+        public string PrimaryImage
+        {
+            get { return Fields.PrimaryImage[this]; }
+            set { Fields.PrimaryImage[this] = value; }
+        }
+
+        [DisplayName("Gallery Images"),
+         MultipleImageUploadEditor(FilenameFormat = "Movie/GalleryImages/~")]
+        public string GalleryImages
+        {
+            get { return Fields.GalleryImages[this]; }
+            set { Fields.GalleryImages[this] = value; }
+        }
+
         [MasterDetailRelation(foreignKey: "MovieId", IncludeColumns = "PersonFullname")]
         [DisplayName("Cast List"), NotMapped]
         public List<MoviecastRow> CastList
@@ -122,6 +138,8 @@ namespace ERP.test.Entities
             public ListField<Int32> GenreList;
             public RowListField<MoviecastRow> CastList;
 
+            public StringField PrimaryImage;
+            public StringField GalleryImages;
 
 
         }

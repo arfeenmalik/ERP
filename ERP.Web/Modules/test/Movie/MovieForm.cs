@@ -15,6 +15,8 @@ namespace ERP.test.Forms
     {
         public String Title { get; set; }
         public String Description { get; set; }
+        public String PrimaryImage { get; set; }
+        public String GalleryImages { get; set; }
         [MovieCastEditor,IgnoreName]
         public List<Entities.MoviecastRow> CastList { get; set; }
 
