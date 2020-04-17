@@ -41,6 +41,7 @@ namespace ERP.test.Entities
             set { Fields.Description[this] = value; }
         }
 
+        [MasterDetailRelation(foreignKey: "MovieId", IncludeColumns = "PersonFullname")]
         [DisplayName("Cast List"), NotMapped]
         public List<MoviecastRow> CastList
         {
